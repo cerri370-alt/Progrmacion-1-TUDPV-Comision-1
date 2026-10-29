@@ -1,15 +1,15 @@
 METODOLOGÍA ROTATIVA ITERATIVA: DESARROLLO DE VIDEOJUEGOS C# 
 Programación de Videojuegos I — UTN FRT | Cátedra: Profesor Matías Chocobar
-Fase 1: Arquitectura de Software POO I y POO II (10 Proyectos de Videojuegos Reales)
+Fase 1: Arquitectura de software unity(10 Proyectos de Videojuegos Reales)
 ⚠️ [ENTREGA OBLIGATORIA GITHUB]
-FECHA LÍMITE DE ENTREGA: VIERNES 16 DE OCTUBRE DE 2026 HASTA LAS 23:50 HS.
+FECHA LÍMITE DE ENTREGA: VIERNES 30 DE OCTUBRE DE 2026 HASTA LAS 23:50 HS.
 No se recibirán entregas por correo electrónico ni ningún otro medio que no sea Pull Request en GitHub.
 Estructura obligatoria de carpetas: Todo el código y reporte debe estar contenido dentro de la carpeta: 'grupo/' (Ejemplo: grupo/Grupo_01/).
 
 1. METODOLOGÍA ROTATIVA Y FLUJO COLABORATIVO GITHUB (LÍDER Y EQUIPO)
 La cátedra implementa la metodología de rotación de código profesional (Code Handover & Code Review):
 • Cada uno de los 10 grupos recibe asignado un videojuego específico por el docente (los alumnos no eligen tema).
-• En la Semana 1 (actual), cada grupo programa la arquitectura lógica en C# con mínimo 4 clases integrando POO 1 y POO 2.
+• En la Semana 2 (actual), cada grupo programa la arquitectura unity.
 • En las semanas siguientes, el docente ROTARÁ los repositorios entre grupos: cada equipo recibirá el proyecto de otro grupo, deberá auditar el código recibido, solucionar bugs, completar funciones faltantes e integrarle la nueva unidad (físicas 2D en Unity).
 
 FLUJO TÉCNICO DE GITHUB PASO A PASO:
@@ -83,4 +83,20 @@ Siga detalladamente cada uno de los pasos descritos a continuación para la corr
    > `git merge dev-NombreApellido-Legajo`
 3. En la interfaz web de su fork, cuando la cátedra incorpore nuevo material, utilice la opción **Sync fork > Update branch** para mantenerse alineado con el repositorio principal.
 
-**Fecha Limite de entrega : Jueves 24/09/2026 a las 23:50 hs se cerrara los PR**
+**Fecha Limite de entrega : Viernes 30/10/2026 a las 23:50 hs se cerrara los PR**
+
+Acción de los Integrantes del Grupo:
+
+NO clonan al docente: Clonan el FORK del Líder a sus computadoras locales mediante GitHub Desktop.
+Cada integrante crea obligatoriamente una rama con su nombre y legajo: branch 'dev-NombreApellido-Legajo'.
+Desarrolla su aporte en Visual Studio dentro de la carpeta 'grupo/Grupo_XX/'.
+Realiza Commit y Push de su rama hacia el repositorio del Líder.
+Integración Final y Pull Request al Docente:
+
+El Líder revisa los aportes de sus compañeros y realiza el MERGE de las ramas a la rama 'main' de su Fork.
+Finalmente, el Líder abre un PULL REQUEST (PR) desde su Fork hacia el repositorio del Profesor Matías Chocobar.
+Título obligatorio del PR: [ENTREGA FASE 1] Grupo XX - Tema: NombreDelJuego.
+REPORTE TÉCNICO OBLIGATORIO (reporte.md dentro de la carpeta del grupo): Todo grupo debe incluir un archivo 'reporte.md' con las siguientes secciones: a) Lista de integrantes (Nombre, Apellido y Legajo). b) Diagnóstico de inicio (Cómo se concibió la arquitectura inicial). c) Registro de cambios y módulos implementados. d) Solución de problemas y bugs prevenidos mediante encapsulamiento. e) Guía de prueba de la consola (cómo probar los métodos en Main).
+
+
+
