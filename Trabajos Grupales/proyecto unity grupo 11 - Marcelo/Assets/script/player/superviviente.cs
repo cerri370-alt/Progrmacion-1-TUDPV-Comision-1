@@ -72,10 +72,10 @@ public class Superviviente
         Envenenado = false;
     }
 
-    public void AgregarItem(ConsumibleSurvival item)
+    public bool AgregarItem(ConsumibleSurvival item)
     {
         if (item == null)
-            return;
+            return false;
 
         for (int i = 0; i < inventario.Length; i++)
         {
@@ -83,25 +83,54 @@ public class Superviviente
             {
                 inventario[i] = item;
                 Debug.Log(item.Nombre + " agregado al inventario.");
-                return;
+                return true;
             }
         }
 
         Debug.Log("Inventario lleno.");
+        return false;
     }
 
+    public int ContarItems<T>() where T : ConsumibleSurvival
+    {
+        int cantidad = 0;
+
+        for (int i = 0; i < inventario.Length; i++)
+        {
+            if (inventario[i] is T)
+                cantidad++;
+        }
+
+        return cantidad;
+    }
+
+    public bool UsarItem<T>() where T : ConsumibleSurvival
+    {
+        for (int i = 0; i < inventario.Length; i++)
+        {
+            if (!(inventario[i] is T))
+                continue;
+
+            inventario[i].Consumir(this);
+            inventario[i] = null;
+            return true;
+        }
+
+        Debug.Log("No tienes ese objeto en el inventario.");
+        return false;
+    }
 
     public bool UsarItem(int slot)
     {
         if (slot < 1 || slot > inventario.Length)
         {
-            Debug.Log("Espacio inválido.");
+            Debug.Log("Espacio invï¿½lido.");
             return false;
         }
 
         if (inventario[slot - 1] == null)
         {
-            Debug.Log("Ese espacio está vacío.");
+            Debug.Log("Ese espacio estï¿½ vacï¿½o.");
             return false;
         }
 
@@ -121,7 +150,7 @@ public class Superviviente
             if (inventario[i] != null)
                 Debug.Log((i + 1) + ". " + inventario[i].Nombre);
             else
-                Debug.Log((i + 1) + ". Vacío");
+                Debug.Log((i + 1) + ". Vacï¿½o");
         }
     }
 
@@ -129,7 +158,6 @@ public class Superviviente
     {
         Debug.Log("Superviviente: " + Nombre);
         Debug.Log("Salud: " + Salud);
-        Debug.Log("Envenenado: " + (Envenenado ? "Sí" : "No"));
+        Debug.Log("Envenenado: " + (Envenenado ? "Sï¿½" : "No"));
     }
 }
-
