@@ -16,11 +16,8 @@ public class SupervivienteControlador : MonoBehaviour
     void Start()
     {
         leon = new Superviviente("Leon", 35, true);
-
-        leon.AgregarItem(new HierbaVerde("Hierba Verde"));
-        leon.AgregarItem(new SprayPrimerosAuxilios("Spray"));
-
         ActualizarBarraVida();
+        ActualizarTextoInventario();
     }
 
     
@@ -76,9 +73,9 @@ public class SupervivienteControlador : MonoBehaviour
         if (leon == null)
             return;
 
-        if (leon.UsarItem(1))
+        if (leon.UsarItem<HierbaVerde>())
         {
-            textoHierba.text = "0";
+            ActualizarTextoInventario();
             ActualizarBarraVida();
         }
     }
@@ -90,12 +87,43 @@ public class SupervivienteControlador : MonoBehaviour
         if (leon == null)
             return;
 
-        if (leon.UsarItem(2))
+        if (leon.UsarItem<SprayPrimerosAuxilios>())
         {
-            textoSpray.text = "0";
+            ActualizarTextoInventario();
             ActualizarBarraVida();
         }
     }
 
-}
+    public bool AgregarRecompensaAleatoria()
+    {
+        if (leon == null)
+            return false;
 
+        ConsumibleSurvival recompensa;
+
+        if (Random.Range(0, 2) == 0)
+            recompensa = new HierbaVerde("Hierba Verde");
+        else
+            recompensa = new SprayPrimerosAuxilios("Spray");
+
+        if (!leon.AgregarItem(recompensa))
+            return false;
+
+        ActualizarTextoInventario();
+        Debug.Log("Encontraste: " + recompensa.Nombre);
+        return true;
+    }
+
+    private void ActualizarTextoInventario()
+    {
+        if (leon == null)
+            return;
+
+        if (textoHierba != null)
+            textoHierba.text = leon.ContarItems<HierbaVerde>().ToString();
+
+        if (textoSpray != null)
+            textoSpray.text = leon.ContarItems<SprayPrimerosAuxilios>().ToString();
+    }
+
+}
